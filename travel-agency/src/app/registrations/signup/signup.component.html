@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="text-center">
+          <h1>
+            Welcome to {{ title }}!
+            <h4>Are you excited to take the journey of the life and join us in the Mars exploration? if yes, you've reached the right place.</h4>
+            <h4>Please add your name and email and our team will reach you for next steps.</h4>
+          </h1>
+        </div>        
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="card">
+              <div class="card-body">
+                <form class="" (ngSubmit)="onSignUpSubmit()" #f="ngForm">
+                  <div *ngIf='displaySuccessAlert'>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      Thanks for your interst.Your regestrition is successful!
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert();">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div *ngIf='displayErrorAlert'>
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div *ngFor="let error of signUpErrors">
+                          <ul>
+                            <li>{{error}}</li>
+                          </ul>
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert();">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    </div>
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="name" required="" autofocus="" [(ngModel)]="signUpUser.name"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" required="" autofocus="" [(ngModel)]="signUpUser.login" />
+                  </div>
+                  <br/>
+                  <div class="text-center">
+                    <button type="submit" [disabled]="!(f.valid)" [ngClass]="{'disabled': !(f.valid)}" class="btn btn-primary">Sign up </button>
+                  </div>                  
+                </form>
+              </div>
+            </div>
+            <br>
+            <p><b>VERSION NO: </b>{{version_number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
